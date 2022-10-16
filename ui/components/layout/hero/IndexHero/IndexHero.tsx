@@ -15,6 +15,22 @@ const AppearEase = keyframes`
     }
 `;
 
+const Buttons = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+
+    a button {
+        width: 100%;
+    }
+
+    @media screen and (min-width: ${(p) => p.theme.breakpoints.lg}) {
+        flex-direction: row;
+    }
+`;
+
+
 const Container = styled.div`
     text-align: center;
     padding-top: 13rem;
@@ -111,12 +127,20 @@ const IndexHero = () => {
                     by explaining how your bots arrived at the answers.
                 </Pitch>
                 <AnimatedButtons>
-                    <LinkButton
-                        variant="regular-invert"
-                        href={"#features"}
-                    >
-                        Explore
-                    </LinkButton>
+                    <Buttons>
+                        <LinkButton
+                            variant="regular-invert"
+                            href={"#features"}
+                        >
+                            Explore
+                        </LinkButton>
+                        <LinkButton
+                            variant="regular-invert"
+                            href={"https://explain-ai-app.vercel.app/"}
+                        >
+                            Start Bots
+                        </LinkButton>
+                    </Buttons>
                 </AnimatedButtons>
             </Container>
         </>
