@@ -4,57 +4,53 @@ import pandas as pd
 from annoy import AnnoyIndex
 import os
 import numpy as np
-import config
+from models import AgentCreateRequest
+import config.config as config
 
 
 class Cohere:
 
     def __init__(self):
         self.co = cohere.Client(config.api_key)
-        self.load_data()
+        self.data = pd.read_csv('data/161.csv')
 
-    def load_data(self):
-        with open(config.links_path) as f:
-            self.links = [a.strip() for a in f.readlines()]
-        ref_fnames = [f'{i}.txt' for i in range(len(self.links))]
-        self.texts = []
-        for fname in ref_fnames:
-            with open(config.txt_dir + fname, 'r') as f:
-                text = f.read()
+
+    def embed(self, agent: AgentCreateRequest):
+        for i, text in enumerate(agent.texts):
             # text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
             text = re.sub(r'\s+', ' ', text)
             text = text.lower()
             text = text.strip()
-            self.texts.append(text)
-        self.df = pd.DataFrame({'text': self.texts})
+            agent.texts[i] = text
 
-        ann_path = f'{config.data_dir}/test.ann'
-        if not os.path.exists(ann_path):
-            embeds = self.co.embed(texts=self.texts,
-                            model=config.embed_model,
-                            truncate="LEFT").embeddings
-            embeds = np.array(embeds)
-            np.save('data/embeds.npy', embeds)
+        # self.text_df = pd.DataFrame({'text': agent.texts})
 
-            # Create the search index, pass the size of embedding
-            search_index = AnnoyIndex(embeds.shape[1], 'angular')
-            # Add all the vectors to the search index
-            for i in range(len(embeds)):
-                search_index.add_item(i, embeds[i])
+        # embeds = self.co.embed(texts=self.texts,
+        #                 model=config.embed_model,
+        #                 truncate="LEFT").embeddings
+        # embeds = np.array(embeds)
+        # # np.save('data/embeds.npy', embeds)
 
-            search_index.build(10) # 10 trees
-            search_index.save('data/test.ann')
-        else:
-            embeds = np.load('data/embeds.npy')
-            search_index = AnnoyIndex(embeds.shape[1], 'angular')
-            search_index.load('data/test.ann')
+        # # Create the search index, pass the size of embedding
+        # search_index = AnnoyIndex(embeds.shape[1], 'angular')
+        # # Add all the vectors to the search index
+        # for i in range(len(embeds)):
+        #     search_index.add_item(i, embeds[i])
 
-        self.embeds = embeds
-        self.search_index = search_index
+        # search_index.build(10) # 10 trees
+        # # search_index.save('data/test.ann')
+        # # embeds = np.load('data/embeds.npy')
+        # # search_index = AnnoyIndex(embeds.shape[1], 'angular')
+        # # search_index.load('data/test.ann')
+        # return embeds, search_index
 
 
     def query(self, query: str):
         query = f"Question: {query} Answer:"
+        
+        embeds = np.load('data/embeds.npy')
+        search_index = AnnoyIndex(embeds.shape[1], 'angular')
+        search_index.load('data/test.ann')
 
         # generative response
         response = self.co.generate( 
@@ -82,13 +78,13 @@ class Cohere:
         ).embeddings)
 
         # Retrieve the nearest neighbors
-        similar_item_ids = self.search_index.get_nns_by_vector(resp_embed[0], 10, include_distances=True)
+        similar_item_ids = search_index.get_nns_by_vector(resp_embed[0], 10, include_distances=True)
         # Format the results
-        results = pd.DataFrame(data={'texts': self.df.iloc[similar_item_ids[0]]['text'],
-                                    'distance': similar_item_ids[1]})
+        # results = pd.DataFrame(data={'texts': self.data.iloc[similar_item_ids[0]]['text'],
+        #                             'distance': similar_item_ids[1]})
 
-        print(f"Query:'{query}'\nNearest neighbors:")
-        print(results)
+        # print(f"Query:'{query}'\nNearest neighbors:")
+        # print(results)
 
-        relevant_sources = [self.links[i] for i in similar_item_ids[0]]
-        return prediction, relevant_sources
+        relevant_sources = self.data.iloc[similar_item_ids[0]]['link']
+        return prediction, list(relevant_sources)

@@ -1,45 +1,65 @@
 from tkinter import W
-from fastapi import FastAPI
-from pydantic import BaseModel
+import uuid
+from fastapi import BackgroundTasks, Body, FastAPI, Form, Request, UploadFile
+import requests
+from db import DbConnection
 from embed import Cohere
+from models import *
+import config.config as config
+
 
 app = FastAPI()
 co = Cohere()
+db = DbConnection()
 
 
-class Query(BaseModel):
-    query: str
+@app.get("/")
+def home(request: Request):
+    return "hello world"
 
+@app.post("/")
+async def home_post(request: Request):
+    if request.headers['content-type'] == 'application/json':
+        a = await request.json()
+    else:
+        a = await request.form()
+    print(a)
+    return a
 
-class ExplainedResponse(BaseModel):
-    query: str
-    response: str
-    sources: list[str]
-
-
-@app("/")
-def home():
-    return "Hello World!"
+def respond_query(q: Query, response_url: str):
+    if config.verbose:
+        print(f"Responding to query: {q.query}")
+    response, sources = co.query(q)
+    answer = f'{response} \n\n Here are some sources: \n - {sources[0]} \n - {sources[1]} \n - {sources[2]}'
+    requests.post(response_url, json={'text': answer})
 
 
 @app.post("/query")
-def query(query: Query):
-    response, sources = co.query(query.query)
-    return ExplainedResponse(
-        query=query.query,
-        response=response,
-        sources=sources
-    )
+async def query(background_tasks: BackgroundTasks, text: str = Form(), response_url: str = Form()):
+    q = Query(agent_id=config.DEFAULT_AGENT_ID, query=text)
+    background_tasks.add_task(respond_query, q, response_url)
+    return text
 
 
 @app.post("/create_agent")
-def new_agent():
-    raise NotImplementedError
+def new_agent(create_agent_request: AgentCreateRequest, data: UploadFile):
+    embeds, annoy_index = co.create_embed(create_agent_request)
+    agent: Agent = Agent(
+        id=uuid.uuid4(),
+        user_id=config.DEFAULT_USER_ID,
+        name=create_agent_request.name,
+        ref_urls=create_agent_request.ref_urls,
+        texts=create_agent_request.texts,
+        embeddings=embeds,
+        annoy_index=annoy_index
+    )
+    db.insert_agent(agent)
 
 
 @app.get("/list_agents")
 def agents():
-    raise NotImplementedError
+    user_id = config.DEFAULT_USER_ID
+    return {'agents': db.get_agents_ids(user_id)}
 
 
 @app.post("/update_agent")
