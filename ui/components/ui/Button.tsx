@@ -43,7 +43,7 @@ const Button = ({ variant = "regular", ...props }: ButtonProps) => {
             case "regular-invert":
                 return theme.colors.background;
             case "green":
-                return "#55a831";
+                return "#7f9538";
             default:
                 return theme.colors.backgroundLighter;
         }

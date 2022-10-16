@@ -138,7 +138,7 @@ const IndexHero = () => {
                             variant="green"
                             href={"https://explain-ai-app.vercel.app/"}
                         >
-                            Start Bots
+                            Try for free
                         </LinkButton>
                     </Buttons>
                 </AnimatedButtons>
