@@ -1,0 +1,4 @@
+Blackrock
+Hi Hackers! BlackRock is very excited to sponsor Cal Hacks 9.0 and we are looking forward to hosting a technical workshop - “Where Technology meets Finance” please attend on Saturday, Oct 15th. BlackRock manages assets for clients across the world in 100 countries. Our technology teams are responsible for designing, building, and supporting our Aladdin platform used by our investment and risk teams and clients. Please come to our booth to meet our engineers, know about career opportunities and get some fantastic BlackRock swag.
+ 
+This year for the hackathon we are asking everyone to think about ESG while developing your application. We challenge you to think through the question: What tools can you build to help you make your life more sustainable?

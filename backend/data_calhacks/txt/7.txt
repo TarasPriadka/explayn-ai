@@ -1,0 +1,11 @@
+Intersystems
+Build your innovation with the technology used by world's most important applications! 
+ 
+Take part in the "Best use of InterSystems FHIR Services" challenge! 
+InterSystems will provide free access to cloud services, multiple sample datasets with clinical data, online and onsite mentors and support. You will be able to submit your project to the main healthcare track as well.
+ 
+1st place: $2000
+2nd place: $1000
+3rd place: 7-month access to Coursera and swag pack for each team member
+ 
+Check our resources page https://calhacks-2022.isccloud.io/
