@@ -10,6 +10,8 @@ import Servers from "../assets/illustrations/Servers.svg";
 import Roles from "../assets/illustrations/Roles.svg";
 import Private from "../assets/illustrations/Private.svg";
 import Slack from "../assets/illustrations/slack_img1.png";
+import DigitalOcean from "../assets/illustrations/digital_ocean.png";
+import School from "../assets/illustrations/symetric_key.png";
 import { GetStaticProps } from "next";
 
 const HeroContainer = styled.div`
@@ -32,7 +34,7 @@ export default function Home({ fadeoutUrl }: HomeProps) {
                 <FeatureIntro/>
                 <Feature
                     heading="Internal Assistant"
-                    image={Slack.src}
+                    image={DigitalOcean.src}
                 >
                 Use Explayn.ai to put structured internal information at your employee's fingertips.
                 There's no need to search through emails or Slack messages to find the information you need.
@@ -40,7 +42,7 @@ export default function Home({ fadeoutUrl }: HomeProps) {
                 </Feature>
                 <Feature
                     heading="Education"
-                    image={Slack.src}
+                    image={School.src}
                     reverse
                 >
                 Use Explayn.ai to supercharge your students. Process the whole college course, and let Explayn.ai
