@@ -32,6 +32,29 @@ import Nft6 from "assets/img/nfts/Nft6.png";
 
 const images = [Nft1, Nft2, Nft3, Nft4,Nft5, Nft6];
 
+/**
+ * Function to produce UUID.
+ * See: http://stackoverflow.com/a/8809472
+ */
+ function generateUUID()
+ {
+     var d = new Date().getTime();
+     
+     if( window.performance && typeof window.performance.now === "function" )
+     {
+         d += performance.now();
+     }
+     
+     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c)
+     {
+         var r = (d + Math.random()*16)%16 | 0;
+         d = Math.floor(d/16);
+         return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+     });
+ 
+ return uuid;
+ }
+
 export default function CreateAgent(props) {
     const {isOpen, onOpen, onClose} = useDisclosure();
     const setAgents = useSetRecoilState(agentsAtom);
@@ -47,6 +70,7 @@ export default function CreateAgent(props) {
             name: agentName,
             status: "Training",
             usage : "0",
+            api: generateUUID(),
             description: agentDescription,
             image: randomImage,
         };

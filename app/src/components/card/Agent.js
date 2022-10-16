@@ -30,7 +30,7 @@ import {useSetRecoilState} from "recoil";
 import {agentsAtom} from "views/admin/atoms";
 
 export default function NFT(props) {
-  const { image, name, description} = props;
+  const { image, name, description, api} = props;
   const [like, setLike] = useState(false);
   const textColor = useColorModeValue("navy.700", "white");
   const textColorBid = useColorModeValue("brand.500", "white");
@@ -145,7 +145,7 @@ export default function NFT(props) {
                   <PopoverArrow />
                   <PopoverCloseButton />
                   <PopoverBody>
-                    {`API Secret: 2348*)3209FDSL2(FE)`}
+                    {`API Secret: ${api}`}
                     <br />
                     {`API endpoint: explayn.ai/call/TOKEN`}
                   </PopoverBody>

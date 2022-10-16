@@ -46,6 +46,7 @@ export default function Marketplace() {
             name={agent.name}
             description={agent.description}
             image={agent.image}
+            api={agent.api}
             />
         );
         })}
