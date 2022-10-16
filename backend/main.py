@@ -1,6 +1,7 @@
 from tkinter import W
 import uuid
 from fastapi import FastAPI, Form, UploadFile
+import requests
 from db import DbConnection
 from embed import Cohere
 from models import *
@@ -17,12 +18,19 @@ def home():
     return "Hello World!"
 
 
-@app.post("/query")
-def query(text: str = Form()):
-    q = Query(agent_id=config.DEFAULT_AGENT_ID, query=text)
+async def respond_query(q: Query, respond_url: str):
+    if config.verbose:
+        print(f"Responding to query: {q.query}")
     response, sources = co.query(q)
-    print(response, sources)
-    return f'{response} \n\n Here are some sources: \n - {sources[0]} \n - {sources[1]}',
+    answer = f'{response} \n\n Here are some sources: \n - {sources[0]} \n - {sources[1]} \n - {sources[2]}'
+    requests.post(respond_url, data={'text': answer})
+
+
+@app.post("/query")
+def query(text: str = Form(), respond_url: str = Form()):
+    q = Query(agent_id=config.DEFAULT_AGENT_ID, query=text)
+    respond_query(q, respond_url)
+    return {"status": "ok"}
 
 
 @app.post("/create_agent")
