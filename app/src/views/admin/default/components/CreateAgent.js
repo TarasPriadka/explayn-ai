@@ -57,7 +57,7 @@ export default function CreateAgent(props) {
 
     return (
         <>
-            <Button onClick={onOpen} backgroundColor="var(--chakra-colors-green-400)">
+            <Button onClick={onOpen} backgroundColor="#31C66F">
                 Create An Agent
             </Button>
             <Modal size="xl" isOpen={isOpen} onClose={onClose}>
