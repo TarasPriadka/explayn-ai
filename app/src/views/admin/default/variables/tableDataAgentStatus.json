@@ -1,0 +1,17 @@
+[
+  {
+    "name": "CS161",
+    "usage" : "52",
+    "status": "Active"
+  },
+  {
+    "name": "California Tax Documents",
+    "usage" : "22",
+    "status": "Active"
+  },
+  {
+    "name": "AWS Documentation",
+    "usage" : "0",
+    "status": "Training"
+  }
+]

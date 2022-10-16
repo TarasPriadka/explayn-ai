@@ -30,7 +30,7 @@ export function SidebarLinks(props) {
         return (
           <>
             <Text
-              fontSize={"md"}
+              fontSize={"lg"}
               color={activeColor}
               fontWeight='bold'
               mx='auto'
@@ -78,6 +78,7 @@ export function SidebarLinks(props) {
                           ? activeColor
                           : textColor
                       }
+                      fontSize={"md"}
                       fontWeight={
                         activeRoute(route.path.toLowerCase())
                           ? "bold"
@@ -116,6 +117,7 @@ export function SidebarLinks(props) {
                     fontWeight={
                       activeRoute(route.path.toLowerCase()) ? "bold" : "normal"
                     }>
+                    fontSize={"md"}
                     {route.name}
                   </Text>
                   <Box h='36px' w='4px' bg='brand.400' borderRadius='5px' />
