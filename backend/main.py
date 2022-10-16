@@ -20,22 +20,24 @@ def home(request: Request):
 @app.post("/")
 async def home_post(request: Request):
     if request.headers['content-type'] == 'application/json':
-        return await request.json()
+        a = await request.json()
     else:
-        return await request.form()
+        a = await request.form()
+    print(a)
+    return a
 
-async def respond_query(q: Query, respond_url: str):
+async def respond_query(q: Query, response_url: str):
     if config.verbose:
         print(f"Responding to query: {q.query}")
     response, sources = co.query(q)
     answer = f'{response} \n\n Here are some sources: \n - {sources[0]} \n - {sources[1]} \n - {sources[2]}'
-    requests.post(respond_url, data={'text': answer})
+    requests.post(response_url, data={'text': answer})
 
 
 @app.post("/query")
-def query(text: str = Form(), respond_url: str = Form()):
+def query(text: str = Form(), response_url: str = Form()):
     q = Query(agent_id=config.DEFAULT_AGENT_ID, query=text)
-    respond_query(q, respond_url)
+    respond_query(q, response_url)
     return {"status": "ok"}
 
 
