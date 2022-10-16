@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import RevoltLogo from "../../../assets/logo/logo.png";
+import Logo from "../../../assets/logo/logo_white.png";
 
 const NavbarFloat = styled.nav`
     width: 100vw;
@@ -23,14 +23,21 @@ const NavName = styled.h1`
     font-size: 1.5rem;
 `;
 
+const LogoContainer = styled.img`
+    height: 40px;
+`;
+
 const Navbar = () => {
     return (
         <NavbarFloat>
             <NavbarFlex>
                 <Link href="/" passHref>
-                    <a>
-                       <NavName>Explain AI</NavName> 
-                    </a>
+                    <div>
+                        <LogoContainer src={Logo.src} />
+                        <a>
+                        <NavName>Explain AI</NavName> 
+                        </a>
+                    </div>
                 </Link>
             </NavbarFlex>
         </NavbarFloat>
