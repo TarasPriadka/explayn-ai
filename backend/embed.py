@@ -15,7 +15,7 @@ class Cohere:
 
     def __init__(self):
         self.co = cohere.Client(config.api_key)
-        self.data = pd.read_csv('data/161.csv')
+        self.data = pd.read_csv(config.csv_path)
 
         # To hardcode the first element in cockroach db
         # embeds = np.load('data/embeds.npy')
