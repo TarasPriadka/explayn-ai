@@ -37,6 +37,7 @@ next-env.d.ts
 
 # python
 __pycache__
+.ipynb_checkpoints
 
 # cohere
 *.bac
