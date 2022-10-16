@@ -1,10 +1,13 @@
+import pickle
 import re
+from tempfile import NamedTemporaryFile
+import uuid
 import cohere
 import pandas as pd
 from annoy import AnnoyIndex
 import os
 import numpy as np
-from models import AgentCreateRequest
+from models import Agent, AgentCreateRequest
 import config.config as config
 
 
@@ -13,6 +16,23 @@ class Cohere:
     def __init__(self):
         self.co = cohere.Client(config.api_key)
         self.data = pd.read_csv('data/161.csv')
+
+        # To hardcode the first element in cockroach db
+        # embeds = np.load('data/embeds.npy')
+        # search_index = AnnoyIndex(embeds.shape[1], 'angular')
+        # search_index.load('data/test.ann')
+
+        # import db
+        # db.DbConnection().insert_agent(Agent(
+        #     id=uuid.uuid4(),
+        #     user_id=config.DEFAULT_USER_ID,
+        #     model_id=config.generate_model,
+        #     name='161',
+        #     ref_urls=list(self.data['link']),
+        #     texts=list(self.data['text']),
+        #     embeddings=embeds,
+        #     annoy_index=search_index
+        # ))
 
 
     def embed(self, agent: AgentCreateRequest):
@@ -46,7 +66,7 @@ class Cohere:
 
 
     def query(self, query: str):
-        query = f"Question: {query} Answer:"
+        query = f"Question: {query} Answer in under fifty words:"
         
         embeds = np.load('data/embeds.npy')
         search_index = AnnoyIndex(embeds.shape[1], 'angular')

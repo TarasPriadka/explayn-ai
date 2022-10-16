@@ -1,4 +1,7 @@
+from typing import Any
 from uuid import UUID
+import annoy
+import numpy as np
 from pydantic import BaseModel
 
 
@@ -14,13 +17,15 @@ class ExplainedResponse(BaseModel):
 
 
 class Agent(BaseModel):
-	id: UUID
-	user_id: UUID
-	name: str
-	ref_urls: list[str]
-	texts: list[str]
-	embeddings: bytes
-	annoy_index: bytes
+    id: UUID
+    user_id: UUID
+    model_id: str
+    status: str # training | ready
+    name: str
+    ref_urls: list[str]
+    texts: list[str]
+    embeddings: Any # but actually np.array
+    annoy_index: Any # annoy.AnnoyIndex
 
 
 class AgentCreateRequest(BaseModel):

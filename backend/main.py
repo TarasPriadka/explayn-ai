@@ -56,6 +56,18 @@ def new_agent(create_agent_request: AgentCreateRequest, data: UploadFile):
     db.insert_agent(agent)
 
 
+@app.get("/get_agent")
+def get_agent(id: str):
+    user_id = config.DEFAULT_USER_ID
+    agent = db.get_agent(id, user_id)
+    return {
+        'id': agent.id,
+        'name': agent.name,
+        'user_id': agent.user_id,
+        'status': agent.status
+    }
+
+
 @app.get("/list_agents")
 def agents():
     user_id = config.DEFAULT_USER_ID
