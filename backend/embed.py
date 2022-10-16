@@ -68,9 +68,26 @@ class Cohere:
     def query(self, query: str):
         query = f"Question: {query} Answer in under fifty words:"
         
-        embeds = np.load('data/embeds.npy')
-        search_index = AnnoyIndex(embeds.shape[1], 'angular')
-        search_index.load('data/test.ann')
+
+        if os.path.exists(f'{config.data_dir}/embeds.npy'):
+            embeds = np.load(f'{config.data_dir}/embeds.npy')
+            search_index = AnnoyIndex(embeds.shape[1], 'angular')
+            search_index.load(f'{config.data_dir}/test.ann')
+        else:
+            embeds = self.co.embed(texts=list(self.data['text']),
+                            model=config.embed_model,
+                            truncate="LEFT").embeddings
+            embeds = np.array(embeds)
+            np.save(f'{config.data_dir}/embeds.npy', embeds)
+
+            # Create the search index, pass the size of embedding
+            search_index = AnnoyIndex(embeds.shape[1], 'angular')
+            # Add all the vectors to the search index
+            for i in range(len(embeds)):
+                search_index.add_item(i, embeds[i])
+
+            search_index.build(10) # 10 trees
+            search_index.save(f'{config.data_dir}/test.ann')
 
         # generative response
         response = self.co.generate( 
