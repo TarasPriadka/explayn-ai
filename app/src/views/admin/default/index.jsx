@@ -19,6 +19,7 @@ import HistoryItem from "views/admin/default/components/HistoryItem";
 import NFT from "components/card/NFT";
 import Agent from "components/card/Agent";
 import Card from "components/card/Card.js";
+import CreateAgent from "views/admin/default/components/CreateAgent";
 
 // Assets
 import Nft1 from "assets/img/nfts/Nft1.png";
@@ -50,7 +51,8 @@ export default function Marketplace() {
         <Flex
           flexDirection='column'
           gridArea={{ xl: "1 / 1 / 2 / 3", "2xl": "1 / 1 / 2 / 2" }}>
-          <Banner />
+          {/* <Banner /> */}
+          <CreateAgent />
           <Flex direction='column'>
             <Flex
               mt='45px'

@@ -11,6 +11,14 @@ import {
   Link,
   Text,
   useColorModeValue,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/card/Card.js";
@@ -23,6 +31,8 @@ export default function NFT(props) {
   const [like, setLike] = useState(false);
   const textColor = useColorModeValue("navy.700", "white");
   const textColorBid = useColorModeValue("brand.500", "white");
+  const initialFocusRef = React.useRef()
+
   return (
     <Card p='20px'>
       <Flex direction={{ base: "column" }} justify='center'>
@@ -119,16 +129,33 @@ export default function NFT(props) {
               "2xl": "row",
             }}
             mt='25px'>
-              <Button
-                variant='darkBrand'
-                color='white'
-                fontSize='sm'
-                fontWeight='500'
-                borderRadius='70px'
-                px='24px'
-                py='5px'>
-                  Details
-              </Button>
+              <Popover
+              >
+                <PopoverTrigger>
+                  <Button
+                    variant='darkBrand'
+                    color='white'
+                    fontSize='sm'
+                    fontWeight='500'
+                    borderRadius='70px'
+                    px='24px'
+                    py='5px'>
+                      Details
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverHeader pt={4} fontWeight='bold' border='0'>
+                    Details 
+                  </PopoverHeader>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    {`API Secret: 2348*)3209FDSL2(FE)`}
+                    <br />
+                    {`API endpoint: explayn.ai/call/TOKEN`}
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
           </Flex>
         </Flex>
       </Flex>
