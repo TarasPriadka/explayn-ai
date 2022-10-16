@@ -34,22 +34,26 @@ export default function Home({ fadeoutUrl }: HomeProps) {
                     heading="Internal Assistant"
                     image={Slack.src}
                 >
-                    Use Explain.ai to put internal information at your employee's fingertips.
+                Use Explain.ai to put structured internal information at your employee's fingertips.
+                There's no need to search through emails or Slack messages to find the information you need.
+                Let the bot do the work for you, and provide references to the original sources.
                 </Feature>
                 <Feature
                     heading="Education"
                     image={Slack.src}
                     reverse
                 >
-                Use Explain.ai to supercharge your students. 
-                Explain.ai-powered virtual tutors are really good. 
+                Use Explain.ai to supercharge your students. Process the whole college course, and let Explayn.ai
+                parse and structure the content for you. Use our intelegent bots to answer questions, and
+                reference students to sources with more information.
                 </Feature>
                 <Feature
                     heading="Documentation."
                     image={Slack.src}
                 >
-                    Use Explain.ai to make your documentation instantly accessible
-                    and interpretable.
+                    Use Explain.ai to make your documentation instantly accessible through powerful machine learning
+                    language models. Power your community with bots which can provide answers to any unstructures questions
+                    while basing their responses on your data.
                 </Feature>
             </PagePadding>
             <PreFooterCTA />
