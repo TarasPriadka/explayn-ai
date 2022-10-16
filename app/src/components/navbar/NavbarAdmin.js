@@ -74,7 +74,7 @@ export default function AdminNavbar(props) {
       mx='auto'
       mt={secondaryMargin}
       pb='8px'
-      right={{ base: "12px", md: "30px", lg: "30px", xl: "30px" }}
+      right ={{ base: "15px", md: "30px", lg: "30px", xl: "30px" }}
       px={{
         sm: paddingX,
         md: "10px",
@@ -133,15 +133,15 @@ export default function AdminNavbar(props) {
             {brandText}
           </Link>
         </Box>
-        <Box ms='auto' w={{ sm: "100%", md: "unset" }}>
-          <AdminNavbarLinks
-            onOpen={props.onOpen}
-            logoText={props.logoText}
-            secondary={props.secondary}
-            fixed={props.fixed}
-            scrolled={scrolled}
-          />
-        </Box>
+        {/* <Box ms='auto' w={{ sm: "100%", md: "unset" }}> */}
+        {/*   <AdminNavbarLinks */}
+        {/*     onOpen={props.onOpen} */}
+        {/*     logoText={props.logoText} */}
+        {/*     secondary={props.secondary} */}
+        {/*     fixed={props.fixed} */}
+        {/*     scrolled={scrolled} */}
+        {/*   /> */}
+        {/* </Box> */}
       </Flex>
       {secondary ? <Text color='white'>{message}</Text> : null}
     </Box>
