@@ -1,6 +1,6 @@
 from tkinter import W
 import uuid
-from fastapi import FastAPI, Form, UploadFile
+from fastapi import Body, FastAPI, Form, Request, UploadFile
 import requests
 from db import DbConnection
 from embed import Cohere
@@ -14,9 +14,15 @@ db = DbConnection()
 
 
 @app.get("/")
-def home():
-    return "Hello World!"
+def home(request: Request):
+    return "hello world"
 
+@app.post("/")
+async def home_post(request: Request):
+    if request.headers['content-type'] == 'application/json':
+        return await request.json()
+    else:
+        return await request.form()
 
 async def respond_query(q: Query, respond_url: str):
     if config.verbose:
