@@ -10,15 +10,16 @@ CREATE_AGENTS_TABLE = '''
         texts STRING[],
         embeddings BYTES,
         annoy_index BYTES,
+        status STRING,
         INDEX user_id_idx (user_id)
     );
 '''
 
 INSERT_AGENT = '''
     INSERT INTO agents (
-        id, user_id, model_id, name, ref_urls, texts, embeddings, annoy_index
+        id, user_id, model_id, name, ref_urls, texts, embeddings, annoy_index, status
     ) VALUES (
-        %(id)s, %(user_id)s, %(model_id)s, %(name)s, %(ref_urls)s, %(texts)s, %(embeddings)s, %(annoy_index)s
+        %(id)s, %(user_id)s, %(model_id)s, %(name)s, %(ref_urls)s, %(texts)s, %(embeddings)s, %(annoy_index)s, %(status)s
     );
 '''
 

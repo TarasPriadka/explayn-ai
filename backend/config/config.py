@@ -9,6 +9,7 @@ links_path = 'data/161_links.txt'
 api_key = 'sMGG1mMkfOqx7zoZSPgXXkLmfWgsbSfIW1XMtR9j'
 embed_model = 'medium'
 generate_model = 'e4759a69-7173-4458-bc78-594ae7aa1992-ft'
+embedding_size = 2048
 
 # other
 verbose = True
