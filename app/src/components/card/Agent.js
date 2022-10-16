@@ -24,7 +24,10 @@ import {
 import Card from "components/card/Card.js";
 // Assets
 import React, { useState } from "react";
-import { IoHeart, IoHeartOutline } from "react-icons/io5";
+import { IoCloseCircleSharp, IoCloseCircleOutline } from "react-icons/io5";
+
+import {useSetRecoilState} from "recoil";
+import {agentsAtom} from "views/admin/atoms";
 
 export default function NFT(props) {
   const { image, name, description} = props;
@@ -32,6 +35,8 @@ export default function NFT(props) {
   const textColor = useColorModeValue("navy.700", "white");
   const textColorBid = useColorModeValue("brand.500", "white");
   const initialFocusRef = React.useRef()
+
+  const setAgents = useSetRecoilState(agentsAtom);
 
   return (
     <Card p='20px'>
@@ -57,12 +62,13 @@ export default function NFT(props) {
             h='36px'
             onClick={() => {
               setLike(!like);
+              setAgents((oldAgents) => [...oldAgents].filter(agent => agent.name!=name));
             }}>
             <Icon
               transition='0.2s linear'
               w='20px'
               h='20px'
-              as={like ? IoHeart : IoHeartOutline}
+              as={like ? IoCloseCircleSharp : IoCloseCircleSharp}
               color='brand.500'
             />
           </Button>

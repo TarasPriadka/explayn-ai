@@ -21,9 +21,15 @@ import {
   useTable,
 } from "react-table";
 
-function AgentStatusTable(props) {
-  const { columnsData, tableData } = props;
+import {useRecoilValue} from "recoil";
+import {agentsAtom} from "views/admin/atoms";
 
+function AgentStatusTable(props) {
+  const { columnsData } = props;
+
+
+  const agents = useRecoilValue(agentsAtom);
+  const tableData = agents;
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = useMemo(() => tableData, [tableData]);
 
