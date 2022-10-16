@@ -1,6 +1,6 @@
 from tkinter import W
 import uuid
-from fastapi import Body, FastAPI, Form, Request, UploadFile
+from fastapi import BackgroundTasks, Body, FastAPI, Form, Request, UploadFile
 import requests
 from db import DbConnection
 from embed import Cohere
@@ -35,10 +35,10 @@ async def respond_query(q: Query, response_url: str):
 
 
 @app.post("/query")
-def query(text: str = Form(), response_url: str = Form()):
+def query(background_tasks: BackgroundTasks, text: str = Form(), response_url: str = Form()):
     q = Query(agent_id=config.DEFAULT_AGENT_ID, query=text)
-    respond_query(q, response_url)
-    return {"status": "ok"}
+    background_tasks.add_task(respond_query, q, response_url)
+    return text
 
 
 @app.post("/create_agent")
