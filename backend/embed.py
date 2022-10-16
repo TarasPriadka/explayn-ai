@@ -66,7 +66,7 @@ class Cohere:
 
 
     def query(self, query: str):
-        query = f"Question: {query} Answer:"
+        query = f"Question: {query} Answer in under fifty words:"
         
         embeds = np.load('data/embeds.npy')
         search_index = AnnoyIndex(embeds.shape[1], 'angular')
