@@ -28,7 +28,7 @@ const HeroButtons = ({ darker }: HeroButtonsProps) => {
             <Buttons>
                 <LinkButton
                     variant={darker ? "regular" : "regular-invert"}
-                    href={URLs.pwa}
+                    href={"https://explain-ai-app.vercel.app/"}
                 >
                     Start Building
                 </LinkButton>
