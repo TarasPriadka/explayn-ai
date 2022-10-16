@@ -4,9 +4,11 @@ import uuid
 # data_dir = 'data/'
 # txt_dir = 'data/txt/'
 # links_path = 'data/161_links.txt'
+# csv_path = 'data/161.csv'
 data_dir = 'data_calhacks/'
 txt_dir = 'data_calhacks/txt/'
 links_path = 'data_calhacks/links.txt'
+csv_path = 'data_calhacks/data.csv'
 
 # cohere
 api_key = 'sMGG1mMkfOqx7zoZSPgXXkLmfWgsbSfIW1XMtR9j'
