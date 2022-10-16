@@ -46,15 +46,15 @@ const routes = [
     name: "Data",
     layout: "/admin",
     icon: <Icon as={MdBarChart} width='20px' height='20px' color='inherit' />,
-    path: "/data-table",
-    component: DataTables,
+    path: "/data-tables",
+    component: null,
   },
   {
     name: "Profile",
     layout: "/admin",
     path: "/profile",
     icon: <Icon as={MdPerson} width='20px' height='20px' color='inherit' />,
-    component: Profile,
+    component: null,
   },
   // {
   //   name: "Sign In",
