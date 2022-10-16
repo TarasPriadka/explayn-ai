@@ -3,13 +3,13 @@ import Head from "next/head";
 const GlobalMeta = () => {
     return (
         <Head>
-            <title>Explain AI</title>
+            <title>Explayn AI</title>
             <link rel="icon" href="/favicon.ico" />
             <meta
                 name="viewport"
                 content="width=device-width, initial-scale=0.9, user-scalable=0"
             />
-            <meta property="og:title" content="Explain AI" key="title" />
+            <meta property="og:title" content="Explayn AI" key="title" />
             <meta property="og:url" content="https://revolt.chat" key="url" />
             <meta
                 property="og:image"
@@ -21,7 +21,7 @@ const GlobalMeta = () => {
                 content="Find your community, connect with the world. The chat platform that puts you first."
                 key="description"
             />
-            <meta property="twitter:title" content="Explain AI" key="tw-title" />
+            <meta property="twitter:title" content="Explayn AI" key="tw-title" />
             <meta property="twitter:site" content="@revoltchat" />
             <meta property="twitter:card" content="summary_large_image" />
             <meta

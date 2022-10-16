@@ -35,7 +35,7 @@ const Navbar = () => {
                     <div>
                         <LogoContainer src={Logo.src} />
                         <a>
-                        <NavName>Explain AI</NavName> 
+                        <NavName>Explayn AI</NavName> 
                         </a>
                     </div>
                 </Link>

@@ -94,7 +94,7 @@ const Footer = () => {
                     <BrandJustify>
                         <Link href="/" passHref>
                             <a>
-                            <NavName>Explain AI</NavName> 
+                            <NavName>Explayn AI</NavName> 
                             </a>
                         </Link>
                     </BrandJustify>
