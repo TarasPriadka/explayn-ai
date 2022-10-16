@@ -4,7 +4,7 @@ import styled, {
     useTheme,
 } from "styled-components";
 
-type ButtonVariant = "primary" | "disabled" | "regular" | "regular-invert";
+type ButtonVariant = "primary" | "disabled" | "regular" | "regular-invert" | "green";
 
 type ButtonStylesProps = ThemedStyledProps<HTMLButtonElement, DefaultTheme> & {
     foreground: string;
@@ -42,6 +42,8 @@ const Button = ({ variant = "regular", ...props }: ButtonProps) => {
                 return theme.colors.disabledGrey;
             case "regular-invert":
                 return theme.colors.background;
+            case "green":
+                return "#55a831";
             default:
                 return theme.colors.backgroundLighter;
         }

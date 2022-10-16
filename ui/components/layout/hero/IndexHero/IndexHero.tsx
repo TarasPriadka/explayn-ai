@@ -135,7 +135,7 @@ const IndexHero = () => {
                             Explore
                         </LinkButton>
                         <LinkButton
-                            variant="regular-invert"
+                            variant="green"
                             href={"https://explain-ai-app.vercel.app/"}
                         >
                             Start Bots
