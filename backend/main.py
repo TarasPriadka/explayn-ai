@@ -26,16 +26,16 @@ async def home_post(request: Request):
     print(a)
     return a
 
-async def respond_query(q: Query, response_url: str):
+def respond_query(q: Query, response_url: str):
     if config.verbose:
         print(f"Responding to query: {q.query}")
     response, sources = co.query(q)
     answer = f'{response} \n\n Here are some sources: \n - {sources[0]} \n - {sources[1]} \n - {sources[2]}'
-    requests.post(response_url, data={'text': answer})
+    requests.post(response_url, json={'text': answer})
 
 
 @app.post("/query")
-def query(background_tasks: BackgroundTasks, text: str = Form(), response_url: str = Form()):
+async def query(background_tasks: BackgroundTasks, text: str = Form(), response_url: str = Form()):
     q = Query(agent_id=config.DEFAULT_AGENT_ID, query=text)
     background_tasks.add_task(respond_query, q, response_url)
     return text
