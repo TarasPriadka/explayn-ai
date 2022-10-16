@@ -86,7 +86,11 @@ class Cohere:
             return_likelihoods='NONE') 
         prediction = response.generations[0].text
 
-        prediction = '.'.join(prediction.split('.')[:-1]) + '.'
+        if len(prediction.split('.')) < 2:
+            prediction = prediction + '.'
+        else:
+            prediction = '.'.join(prediction.split('.')[:-1]) + '.'
+
         if config.verbose:
             print(f'Prediction: {prediction}')
 

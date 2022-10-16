@@ -1,0 +1,3 @@
+Scroll
+Scroll is building a bytecode-level equivalent zkEVM zk-Rollup to scale Ethereum. Existing Ethereum applications can migrate onto Scroll as is. Scroll is open-sourced from day one, collaborating closely with the Ethereum Foundation, and dedicated to scaling Ethereum for the next billion users.
+If our vision of scaling Ethereum in an open and community-driven way resonates with you, we are looking for values-aligned and self-motivated individuals to help Scroll become the most developer- and user-friendly scaling solution for Ethereum. You can find opening positions at https://jobs.lever.co/ScrollFoundation

@@ -1,0 +1,5 @@
+Vercel
+Vercel is the platform for frontend developers, providing the speed and reliability innovators need to create at the moment of inspiration. By providing the toolkit frontend teams love and delivering global edge infrastructure, Vercel unlocks developer potential and enables you to go from idea to global application in seconds. Companies, teams, and individual developers using Vercel benefit from a fully-managed, highly-optimized experience that enables customers like Under Armour, Nintendo, The Washington Post, and Zapier to build delightful user experiences.
+ 
+Students can make use of Vercel's free hobby tier and Next.js framework to build, deploy and host every sort of web application. We'll be live in person at CalHacks giving away prizes and taking submissions and giving prizes for the best apps deployed on Vercel during the event!
+

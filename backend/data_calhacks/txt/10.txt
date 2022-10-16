@@ -1,0 +1,5 @@
+Cohere
+Cohere empowers developers to bring language AI to the masses. With a powerful NLP platform, developers can access state-of-the-art large language models to generate or analyze text. Cohere makes it easy to build intelligent applications that can write copy, moderate content, classify data, and extract information — all at a massive scale.
+ 
+Satori Finance
+We are building satori.finance which is an application chain for trading crypto derivatives. Started by two Berkeley alums, we are focused on bridging liquidity from multiple ecosystems into one trading platform. We are looking for both summer interns and full time engineers to work on our public protocol and internal trading algorithms.

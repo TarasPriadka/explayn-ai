@@ -1,0 +1,10 @@
+Cockroach Labs
+Hey, there! Everyone at Cockroach Labs is so keyed up to be part of this year’s Cal Hacks…And not just because two of our founders, Spencer Kimball and Peter Mattis, hacked together a little open source project known as GIMP back in their UC Berkeley student days. Spencer and Peter went on to work at Google before eventually creating CockroachDB, the most highly evolved distributed SQL database on the planet, to help every developer build apps that can scale fast, survive everything, and thrive everywhere.
+ 
+We are looking forward to meeting everyone at [next week’s] hackathon and sharing in the opportunities, fun and prizes!
+ 
+OPPORTUNITIES: Come visit our table to get database questions answered, pick up some very cool stickers, and check out careers at Cockroach Labs.
+ 
+FUN: Join the CockroachDB team at a workshop to Build a RESTful API with CockroachDB Serverless and Python. Workshop participants who create a CockroachDB serverless cluster will receive a t-shirt (while supplies last).
+ 
+PRIZES: One project will receive the Best Use of CockroachDB Serverless Award, and each member of the winning team will receive an iPad Mini (up to 4). If you’d like to get a head start on the fun, check out Cockroach University’s free online mini-courses covering everything from SQL fundamentals to free Serverless sample apps or jump right into your own (forever free) CockroachDB Serverless cluster.
