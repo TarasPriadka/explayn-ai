@@ -39,7 +39,7 @@ export default function NFT(props) {
   const setAgents = useSetRecoilState(agentsAtom);
 
   return (
-    <Card p='20px'>
+    <Card p='10px'>
       <Flex direction={{ base: "column" }} justify='center'>
         <Box mb={{ base: "20px", "2xl": "20px" }} position='relative'>
           <Image
@@ -73,9 +73,9 @@ export default function NFT(props) {
             />
           </Button>
         </Box>
-        <Flex flexDirection='column' justify='space-between' h='100%'>
+        <Flex flexDirection='column' justify='center' alignContent="space-between" h='100%'>
           <Flex
-            justify='space-between'
+            justify='center'
             direction={{
               base: "row",
               md: "column",
@@ -110,23 +110,8 @@ export default function NFT(props) {
                 {description}
               </Text>
             </Flex>
-            <AvatarGroup
-              max={3}
-              color={textColorBid}
-              size='sm'
-              mt={{
-                base: "0px",
-                md: "10px",
-                lg: "0px",
-                xl: "10px",
-                "2xl": "0px",
-              }}
-              fontSize='12px'>
-            </AvatarGroup>
           </Flex>
           <Flex
-            align='start'
-            justify='space-between'
             direction={{
               base: "row",
               md: "column",
@@ -145,7 +130,11 @@ export default function NFT(props) {
                     fontWeight='500'
                     borderRadius='70px'
                     px='24px'
-                    py='5px'>
+                    py='5px'
+                    // position="absolute"
+                    // bottom="0px"
+                    margin="10px"
+                    >
                       Details
                   </Button>
                 </PopoverTrigger>

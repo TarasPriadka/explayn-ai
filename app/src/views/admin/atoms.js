@@ -25,7 +25,7 @@ export const agentsAtom = atom({
             name: "AWS Documentation",
             status: "Training",
             usage: "0",
-            description: "No more endless links to documetation hell",
+            description: "Short AWS Documentation",
             image: Nft6,
         },
     ],

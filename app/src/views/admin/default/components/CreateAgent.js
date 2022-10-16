@@ -38,7 +38,6 @@ export default function CreateAgent(props) {
 
     let [agentName, setAgentName] = useState("");
     let [agentDescription, setAgentDescription] = useState("");
-    let [agentImage, setAgentImage] = useState(1);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +57,7 @@ export default function CreateAgent(props) {
 
     return (
         <>
-            <Button onClick={onOpen}>
+            <Button onClick={onOpen} backgroundColor="var(--chakra-colors-green-400)">
                 Create An Agent
             </Button>
             <Modal size="xl" isOpen={isOpen} onClose={onClose}>
